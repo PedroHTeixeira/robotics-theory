@@ -109,9 +109,16 @@ def quaternion_por_R(R):
     return [q0] + list(qv[:,0])# = [q0, qi, qj, qk]
 
 def ang_euler(R):
-    phi = np.arctan2(-R[1][2],-R[0][2])
+    """
+    phi = np.arctan2(-R[1][2],-R[0][2]) # Fórmulas slide 48 -> COORDENADAS DO CORPO
     theta = np.arctan2(-np.sqrt((R[0][2])**2+(R[1][2])**2), R[2][2])
     psi = np.arctan2(-R[2][1], R[2][0])
+    """
+    
+    phi = np.arctan2(-R[1][2],-R[0][2]) # Fórmulas slide 51 -> COORDENADAS INERCIAIS
+    theta = np.arctan2(-R[2][0], -np.sqrt((R[2][1])**2+(R[2][2])**2))
+    psi = np.arctan2(-R[2][1], R[2][0])
+    
     return phi, theta, psi
 
 def rot_from_a_to_b(a,b):
