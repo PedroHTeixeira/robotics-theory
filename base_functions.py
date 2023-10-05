@@ -110,8 +110,8 @@ def quaternion_por_R(R):
 
 def ang_euler(R):
     phi = np.arctan2(-R[1][2],-R[0][2])
-    theta = np.arctan2(-np.sqrt((-R[0][2])**2+(R[1][2])**2), R[2][2])
-    psi = np.arctan2(-R[2][1], -R[2][0])
+    theta = np.arctan2(-np.sqrt((R[0][2])**2+(R[1][2])**2), R[2][2])
+    psi = np.arctan2(-R[2][1], R[2][0])
     return phi, theta, psi
 
 def rot_from_a_to_b(a,b):
